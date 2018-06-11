@@ -55,7 +55,7 @@ def custom_action(text):
     ip = ip.encode('ascii','ignore')
 
     # get argument path source and dest
-    file1 = (sys.argv[1])
+    filename    = (sys.argv[1])
     destination = (sys.argv[2])
 
     # create path
@@ -70,13 +70,13 @@ def custom_action(text):
     # sync file
     # os.system('rsync -a --rsync-path=\"mkdir -p '+path +"\" "+ file1+" "+path)
     args = "--rsync-path=%s" % (path)
-    subprocess.Popen(["rsync", "-a", args, file1,path])
+    subprocess.Popen(["rsync", "-a", args, filename,path])
 
 #watch_file = '/Users/rachen/Desktop/logman/log.txt'
-watch_file1 = sys.argv[1]
+watch_file = sys.argv[1]
 
 # watcher = Watcher(watch_file)
-watcher_file1 = Watcher(watch_file1, custom_action, text='file1')  # also call custom action function
+watcher_file = Watcher(watch_file, custom_action, text=watch_file)  # also call custom action function
 
 # start the watch going
-watcher_file1.watch()
+watcher_file.watch()
