@@ -2,6 +2,7 @@ import os
 import sys 
 import time
 import netifaces as ni
+import subprocess
 
 class Watcher(object):
     running = True
@@ -67,7 +68,9 @@ def custom_action(text):
     # os.system("rsync -a " +source +" "+destination) 
 
     # sync file
-    os.system('rsync -a --rsync-path=\"mkdir -p '+path +"\" "+ file1+" "+path)
+    # os.system('rsync -a --rsync-path=\"mkdir -p '+path +"\" "+ file1+" "+path)
+    args = "--rsync-path=%s" % (path)
+    subprocess.Popen(["rsync", "-a", args, file1,path])
 
 #watch_file = '/Users/rachen/Desktop/logman/log.txt'
 watch_file1 = sys.argv[1]
