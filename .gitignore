@@ -2,3 +2,5 @@ logged/*
 cluster/*
 ./*
 .*
+*.log
+*.txt
